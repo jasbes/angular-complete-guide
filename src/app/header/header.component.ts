@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
   collapsed = false;
 
   @Output() 
-  private navigationChanged = new EventEmitter<string>();
+  private onNavigationChanged = new EventEmitter<string>();
 
   constructor() { }
 
@@ -18,6 +18,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onNavigationClick(selectedTab: string){
-    this.navigationChanged.emit(selectedTab);
+    this.onNavigationChanged.emit(selectedTab);
   }
 }
