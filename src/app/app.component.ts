@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-complete-guide';
+
+  selectedTab = 'recipe';
+
+  onNavigationChanged(selectedTab: string) {
+    this.selectedTab = selectedTab;
+  }
 }
