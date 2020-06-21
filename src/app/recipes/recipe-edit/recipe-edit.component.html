@@ -3,8 +3,9 @@
         <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="col-xs-12">
-                    <button style="margin-right: 5px;" [disabled]="recipeForm.invalid" class="btn btn-success">Save</button>
-                    <button type="button" class="btn btn-danger">Cancel</button>
+                    <button style="margin-right: 5px;" [disabled]="recipeForm.invalid"
+                        class="btn btn-success">Save</button>
+                    <button (click)="onCancel()" type="button" class="btn btn-danger">Cancel</button>
                 </div>
             </div>
 
@@ -21,14 +22,14 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="imagePath">Image URL</label>
-                        <input formControlName="imagePath" id="imagePath" class="form-control" type="text">
+                        <input #imagePath formControlName="imagePath" id="imagePath" class="form-control" type="text">
                     </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-xs-12">
-                    <img src="" class="image-responsive">
+                    <img [src]="imagePath.value" class="image-responsive">
                 </div>
             </div>
 
@@ -53,13 +54,16 @@
                             <input formControlName="amount" type="number" class="form-control">
                         </div>
                         <div class="col-xs-2">
-                            <button class="btn btn-danger">X</button>
+                            <button type="button" (click)="onDeleteIngredient(i)" class="btn btn-danger">X</button>
                         </div>
                     </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-xs-12"><button type="button" (click)="onAddIngredient()"
-                                class="btn btn-success">Add Ingredient</button></div>
+
+                    <div *ngIf="isEditMode">
+                        <hr>
+                        <div class="row">
+                            <div class="col-xs-12"><button type="button" (click)="onAddIngredient()"
+                                    class="btn btn-success">Add Ingredient</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
