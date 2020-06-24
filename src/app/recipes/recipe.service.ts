@@ -11,30 +11,12 @@ export class RecipeService {
 
     recipesChanged = new Subject<Recipe[]>();
 
-    private recipes: Recipe[] = [
-        new Recipe(
-            'Burger with fries',
-            'Best burger you can get',
-            'http://valenews.com.br/wp-content/uploads/2019/12/FestivalBurguer-e-BeerShoppingJdOriente13122019.jpg',
-            [
-                new Ingredient('Bread', 2),
-                new Ingredient('Meat', 1),
-                new Ingredient('Tomato', 1),
-                new Ingredient('Salad', 1),
-                new Ingredient('Cheese', 1)
-            ]
-        ),
-        new Recipe(
-            'Spaghetti bolognese',
-            'Best spaghetti from Italy',
-            'https://www.errenskitchen.com/wp-content/uploads/2015/02/Quick-Easy-Spaghetti-Bolognese2-1.jpg',
-            [
-                new Ingredient('Pasta', 1),
-                new Ingredient('Tomato souce', 1),
-                new Ingredient('Meat', 1)
-            ]
-        )
-    ];
+    private recipes: Recipe[] = [];
+
+    setRecipes(recipes: Recipe[]) {
+        this.recipes = recipes;
+        this.notifyChanges()
+    }
 
     getRecipes() {
         return [...this.recipes];
