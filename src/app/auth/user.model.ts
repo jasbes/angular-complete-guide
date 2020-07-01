@@ -14,4 +14,8 @@ export class User {
         }
         return this._token;
     }
+
+    get tokenExpirationDateken() {
+        return this._tokenExpirationDate;
+    }
 }
