@@ -1,12 +1,8 @@
 <div class="row">
     <div class="col-xs-12 col-md-6">
-        <div *ngIf="isLoading">
+        <app-alert (close)="onErrorHandler()" *ngIf="error" [message]="error"></app-alert>
+        <div *ngIf="isLoading" style="text-align: center;">
             <app-load-spiner ></app-load-spiner>
-        </div>
-        <div *ngIf="error">
-            <div class="alert alert-danger">
-                {{error}}
-            </div>
         </div>
         <form *ngIf="!isLoading" (ngSubmit)="onSubmit(authForm)" #authForm="ngForm">
             <div class="form-group">
